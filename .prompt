@@ -1,0 +1,72 @@
+DULL=0
+BRIGHT=1
+
+FG_BLACK=30
+FG_RED=31
+FG_GREEN=32
+FG_YELLOW=33
+FG_BLUE=34
+FG_VIOLET=35
+FG_CYAN=36
+FG_WHITE=37
+
+FG_NULL=00
+
+BG_BLACK=40
+BG_RED=41
+BG_GREEN=42
+BG_YELLOW=43
+BG_BLUE=44
+BG_VIOLET=45
+BG_CYAN=46
+BG_WHITE=47
+
+BG_NULL=00
+
+##
+# ANSI Escape Commands
+##
+ESC="\033"
+BEL="\007"
+CSI="${ESC}["
+OSC="${ESC}]"
+
+NORMAL="\[${CSI}m\]"
+RESET="\[${CSI}${DULL};${FG_WHITE};${BG_NULL}m\]"
+
+##
+# Shortcuts for Colored Text ( Bright and FG Only )
+##
+
+# DULL TEXT
+
+BLACK="\[${CSI}${DULL};${FG_BLACK}m\]"
+RED="\[${CSI}${DULL};${FG_RED}m\]"
+GREEN="\[${CSI}${DULL};${FG_GREEN}m\]"
+YELLOW="\[${CSI}${DULL};${FG_YELLOW}m\]"
+BLUE="\[${CSI}${DULL};${FG_BLUE}m\]"
+VIOLET="\[${CSI}${DULL};${FG_VIOLET}m\]"
+CYAN="\[${CSI}${DULL};${FG_CYAN}m\]"
+WHITE="\[${CSI}${DULL};${FG_WHITE}m\]"
+
+# BRIGHT TEXT
+BRIGHT_BLACK="\[${CSI}${BRIGHT};${FG_BLACK}m\]"
+BRIGHT_RED="\[${CSI}${BRIGHT};${FG_RED}m\]"
+BRIGHT_GREEN="\[${CSI}${BRIGHT};${FG_GREEN}m\]"
+BRIGHT_YELLOW="\[${CSI}${BRIGHT};${FG_YELLOW}m\]"
+BRIGHT_BLUE="\[${CSI}${BRIGHT};${FG_BLUE}m\]"
+BRIGHT_VIOLET="\[${CSI}${BRIGHT};${FG_VIOLET}m\]"
+BRIGHT_CYAN="\[${CSI}${BRIGHT};${FG_CYAN}m\]"
+BRIGHT_WHITE="\[${CSI}${BRIGHT};${FG_WHITE}m\]"
+
+
+
+# set titlebar text here
+if [ "$TERM" != "dumb" ]; then
+	TITLEBAR_TEXT="\u@\h:\w"
+	TITLEBAR="\[${OSC}0;${TITLEBAR_TEXT}${BEL}\]"
+else
+	TITLEBAR=
+fi
+export PS1="${TITLEBAR}\n[${BRIGHT_BLUE}\u@\h${WHITE}:${VIOLET}\w${RESET}]\n\$ "
+
