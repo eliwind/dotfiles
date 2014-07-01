@@ -74,6 +74,9 @@ export EDITOR="emacsclient -a emacs"
 export ECHO_NEST_API_KEY=L9W5RGG2FGFJ47NLY
 export ECHO_NEST_CONSUMER_KEY=04d117e4c326b42aba359ca5ca5ff783
 export ECHO_NEST_SECRET_KEY=L48RMOdjSfOXej7feXuyUQ
+
+export LASTFM_API_KEY=731cf917caaefed0a8df3d8ebcca147e
+
 export HOMEBREW_GITHUB_API_TOKEN=68a5501b9bab7fc25c0555b85e34c83afd2c2265
 
 # see whether grep supports --exclude-dir on this machine
