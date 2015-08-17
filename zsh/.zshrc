@@ -47,7 +47,7 @@ ZSH_THEME="phuntimes"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git svn python virtualenv virtualenvwrapper brew)
+plugins=(git python ruby brew)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -69,7 +69,9 @@ source $ZSH/oh-my-zsh.sh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 export PYLINTRC=~/dev/core/trunk/echonest/pylintrc
-export EDITOR="emacsclient -a emacs"
+export ALTERNATE_EDITOR=/Applications/Emacs.app/Contents/MacOS/Emacs
+export EDITOR=emacsclient
+alias emacs="emacsclient -n"
 
 export ECHO_NEST_API_KEY=L9W5RGG2FGFJ47NLY
 export ECHO_NEST_CONSUMER_KEY=04d117e4c326b42aba359ca5ca5ff783
@@ -83,3 +85,6 @@ export HOMEBREW_GITHUB_API_TOKEN=68a5501b9bab7fc25c0555b85e34c83afd2c2265
 grep --exclude-dir=.svn -qs x /etc/hosts > /dev/null 2>&1
 [ $? = 2 ] || export GREP_OPTIONS='--exclude-dir=.svn'
 
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
