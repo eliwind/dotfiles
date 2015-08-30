@@ -83,3 +83,4 @@ export HOMEBREW_GITHUB_API_TOKEN=68a5501b9bab7fc25c0555b85e34c83afd2c2265
 grep --exclude-dir=.svn -qs x /etc/hosts > /dev/null 2>&1
 [ $? = 2 ] || export GREP_OPTIONS='--exclude-dir=.svn'
 
+alias emacs='TERM=xterm-16color emacs'
