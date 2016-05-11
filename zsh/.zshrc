@@ -10,7 +10,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="phuntimes"
+ZSH_THEME="solarized-times"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -82,7 +82,7 @@ export ECHO_NEST_SECRET_KEY=L48RMOdjSfOXej7feXuyUQ
 
 export LASTFM_API_KEY=731cf917caaefed0a8df3d8ebcca147e
 
-export HOMEBREW_GITHUB_API_TOKEN=bdb2e98dd68fff303b30e0f1ccc4ccb918f71d32
+export HOMEBREW_GITHUB_API_TOKEN=xxx 
 export CODE_DIRECTORY="~/dev"
 
 # see whether grep supports --exclude-dir on this machine
