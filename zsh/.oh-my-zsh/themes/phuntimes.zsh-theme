@@ -24,16 +24,16 @@ autoload -Uz vcs_info
 
 #use extended color pallete if available
 if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
-    turquoise="%F{81}"
-    orange="%F{166}"
-    purple="%F{135}"
-    hotpink="%F{161}"
-    limegreen="%F{118}"
+    turquoise="%F{37}"
+    yellow="%F{136}"
+    blue="%F{33}"
+    hotpink="%F{125}"
+    limegreen="%F{64}"
 else
     turquoise="$fg[cyan]"
-    orange="$fg[yellow]"
-    purple="$fg[magenta]"
-    hotpink="$fg[red]"
+    yellow="$fg[yellow]"
+    blue="$fg[blue]"
+    hotpink="$fg[magenta]"
     limegreen="$fg[green]"
 fi
 
@@ -54,7 +54,7 @@ zstyle ':vcs_info:*:prompt:*' check-for-changes true
 PR_RST="%{${reset_color}%}"
 FMT_BRANCH="(%{$turquoise%}%b%u%c${PR_RST})"
 FMT_ACTION="(%{$limegreen%}%a${PR_RST})"
-FMT_UNSTAGED="%{$orange%}●"
+FMT_UNSTAGED="%{$yellow%}●"
 FMT_STAGED="%{$limegreen%}●"
 
 zstyle ':vcs_info:*:prompt:*' unstagedstr   "${FMT_UNSTAGED}"
@@ -99,5 +99,5 @@ function steeef_precmd {
 add-zsh-hook precmd steeef_precmd
 
 PROMPT=$'
-╭─%{$purple%}%n%{$reset_color%} at %{$orange%}%m%{$reset_color%} in %{$limegreen%}%~%{$reset_color%}$(virtualenv_info)$vcs_info_msg_0_
+╭─%{$blue%}%n%{$reset_color%} at %{$yellow%}%m%{$reset_color%} in %{$limegreen%}%~%{$reset_color%}$(virtualenv_info)$vcs_info_msg_0_
 ╰─ᐅ '

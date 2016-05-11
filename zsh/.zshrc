@@ -1,4 +1,7 @@
-export PATH="/usr/local/bin:/usr/local/heroku/bin:/Users/echonest/bin:/Users/echonest/tools/pylint-0.27.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"
+if [ -x /usr/libexec/path_helper ]; then
+	eval `/usr/libexec/path_helper -s`
+fi
+
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
@@ -47,7 +50,11 @@ ZSH_THEME="phuntimes"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
+<<<<<<< b855b20addd50f739b19c6ba85c11e1231790c65
 plugins=(git python ruby virtualenv virtualenvwrapper brew)
+=======
+plugins=(git python ruby rails rvm brew virtualenv virtualenvwrapper docker)
+>>>>>>> zsh config updates
 
 source $ZSH/oh-my-zsh.sh
 
@@ -79,13 +86,16 @@ export ECHO_NEST_SECRET_KEY=L48RMOdjSfOXej7feXuyUQ
 
 export LASTFM_API_KEY=731cf917caaefed0a8df3d8ebcca147e
 
-export HOMEBREW_GITHUB_API_TOKEN=68a5501b9bab7fc25c0555b85e34c83afd2c2265
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export HOMEBREW_GITHUB_API_TOKEN=bdb2e98dd68fff303b30e0f1ccc4ccb918f71d32
+export CODE_DIRECTORY="~/dev"
 
 # see whether grep supports --exclude-dir on this machine
 grep --exclude-dir=.svn -qs x /etc/hosts > /dev/null 2>&1
 [ $? = 2 ] || export GREP_OPTIONS='--exclude-dir=.svn'
 
 alias emacs='TERM=xterm-16color emacs'
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+[ -s ~/.rvm/scripts/rvm ] && source ~/.rvm/scripts/rvm
+[ -s /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
+
