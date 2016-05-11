@@ -50,11 +50,7 @@ ZSH_THEME="phuntimes"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-<<<<<<< b855b20addd50f739b19c6ba85c11e1231790c65
-plugins=(git python ruby virtualenv virtualenvwrapper brew)
-=======
 plugins=(git python ruby rails rvm brew virtualenv virtualenvwrapper docker)
->>>>>>> zsh config updates
 
 source $ZSH/oh-my-zsh.sh
 
