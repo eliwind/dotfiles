@@ -73,8 +73,7 @@ source $ZSH/oh-my-zsh.sh
 
 export PYLINTRC=~/dev/core/trunk/echonest/pylintrc
 export ALTERNATE_EDITOR=/Applications/Emacs.app/Contents/MacOS/Emacs
-export EDITOR=emacsclient
-alias emacs="emacsclient -n"
+export EDITOR="emacsclient -n"
 
 export ECHO_NEST_API_KEY=L9W5RGG2FGFJ47NLY
 export ECHO_NEST_CONSUMER_KEY=04d117e4c326b42aba359ca5ca5ff783
@@ -91,7 +90,7 @@ grep --exclude-dir=.svn -qs x /etc/hosts > /dev/null 2>&1
 
 alias emacs='TERM=xterm-16color emacs'
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="/Applications/Emacs.app/Contents/MacOS/bin/:$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [ -s ~/.rvm/scripts/rvm ] && source ~/.rvm/scripts/rvm
 [ -s /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
 

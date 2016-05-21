@@ -1,34 +1,21 @@
 # a copy of phuntimes, with colors changed to match the Solarized palette
 
 function virtualenv_info {
-    [ $VIRTUAL_ENV ] && echo %{$reset_color%} with %{$hotpink%}`basename $VIRTUAL_ENV`%{$reset_color%}
+    [ $VIRTUAL_ENV ] && echo %{$reset_color%} with %{$blue%}`basename $VIRTUAL_ENV`%{$reset_color%}
 }
 PR_GIT_UPDATE=1
 
-setopt prompt_subst
-autoload colors
-colors
-
-autoload -U add-zsh-hook
 autoload -Uz vcs_info
 
-#use extended color pallete if available
-if [[ $TERM = *256color* || $TERM = *rxvt* ]]; then
-    turquoise="%F{37}"
-    yellow="%F{136}"
-    blue="%F{33}"
-    hotpink="%F{125}"
-    limegreen="%F{64}"
-else
-    turquoise="$fg[cyan]"
-    yellow="$fg[yellow]"
-    blue="$fg[blue]"
-    hotpink="$fg[magenta]"
-    limegreen="$fg[green]"
-fi
+red="$fg[red]"
+yellow="$fg[yellow]"
+green="$fg[green]"
+cyan="$fg[cyan]"
+blue="$fg[blue]"
+magenta="$fg[magenta]"
 
 # enable VCS systems you use
-zstyle ':vcs_info:*' enable git svn
+zstyle ':vcs_info:*' enable git
 
 # check-for-changes can be really slow.
 # you should disable it, if you work with large repositories
@@ -41,19 +28,13 @@ zstyle ':vcs_info:*:prompt:*' check-for-changes true
 # %a - action (e.g. rebase-i)
 # %R - repository path
 # %S - path in the repository
-PR_RST="%{${reset_color}%}"
-FMT_BRANCH="(%{$turquoise%}%b%u%c${PR_RST})"
-FMT_ACTION="(%{$limegreen%}%a${PR_RST})"
-FMT_UNSTAGED="%{$yellow%}●"
-FMT_STAGED="%{$limegreen%}●"
 
-zstyle ':vcs_info:*:prompt:*' unstagedstr   "${FMT_UNSTAGED}"
-zstyle ':vcs_info:*:prompt:*' stagedstr     "${FMT_STAGED}"
-zstyle ':vcs_info:*:prompt:*' actionformats "${FMT_BRANCH}${FMT_ACTION}"
-zstyle ':vcs_info:*:prompt:*' formats       "${FMT_BRANCH}"
+zstyle ':vcs_info:*:prompt:*' unstagedstr   "%{$red%}●%{$reset_color%}%b"
+zstyle ':vcs_info:*:prompt:*' stagedstr     "%{$yellow%}●%{$reset_color%}" 
 zstyle ':vcs_info:*:prompt:*' nvcsformats   ""
 
-
+#zstyle ':vcs_info:*:prompt:*' actionformats "${FMT_BRANCH}${FMT_ACTION}"
+#zstyle ':vcs_info:*:prompt:*' formats       "${FMT_BRANCH}"
 function steeef_preexec {
     case "$(history $HISTCMD)" in
         *git*)
@@ -76,11 +57,12 @@ function steeef_precmd {
         # check for untracked files or updated submodules, since vcs_info doesn't
         if git ls-files --other --exclude-standard --directory 2> /dev/null | grep -q "."; then
             PR_GIT_UPDATE=1
-            FMT_BRANCH="${PR_RST} on %{$turquoise%}%b%u%c%{$hotpink%}●${PR_RST}"
+            FMT_BRANCH="%{$reset_color%} on %{$blue%}%b%c%u%{$magenta%}●%{$reset_color%}"
         else
-            FMT_BRANCH="${PR_RST} on %{$turquoise%}%b%u%c${PR_RST}"
+            FMT_BRANCH="%{$reset_color%} on %{$blue%}%b%c%u%{$reset_color%}"
         fi
         zstyle ':vcs_info:*:prompt:*' formats       "${FMT_BRANCH}"
+        zstyle ':vcs_info:*:prompt:*' actionformats "${FMT_BRANCH} %{$red%}(%a)%{$reset_color%}"
 
         vcs_info 'prompt'
         PR_GIT_UPDATE=
@@ -89,5 +71,5 @@ function steeef_precmd {
 add-zsh-hook precmd steeef_precmd
 
 PROMPT=$'
-╭─%{$blue%}%n%{$reset_color%} at %{$yellow%}%m%{$reset_color%} in %{$limegreen%}%~%{$reset_color%}$(virtualenv_info)$vcs_info_msg_0_
+╭─%{$yellow%}%n%{$reset_color%} @ %{$green%}%m%{$reset_color%} in %{$cyan%}%~%{$reset_color%}$(virtualenv_info)$vcs_info_msg_0_
 ╰─ᐅ '
