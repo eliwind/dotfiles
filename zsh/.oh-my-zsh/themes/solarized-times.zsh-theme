@@ -29,8 +29,8 @@ zstyle ':vcs_info:*:prompt:*' check-for-changes true
 # %R - repository path
 # %S - path in the repository
 
-zstyle ':vcs_info:*:prompt:*' unstagedstr   "%{$red%}●%{$reset_color%}%b"
-zstyle ':vcs_info:*:prompt:*' stagedstr     "%{$yellow%}●%{$reset_color%}" 
+zstyle ':vcs_info:*:prompt:*' unstagedstr   "%{$cyan%}●%{$reset_color%}%b"
+zstyle ':vcs_info:*:prompt:*' stagedstr     "%{$green%}●%{$reset_color%}" 
 zstyle ':vcs_info:*:prompt:*' nvcsformats   ""
 
 #zstyle ':vcs_info:*:prompt:*' actionformats "${FMT_BRANCH}${FMT_ACTION}"
@@ -71,5 +71,5 @@ function steeef_precmd {
 add-zsh-hook precmd steeef_precmd
 
 PROMPT=$'
-╭─%{$yellow%}%n%{$reset_color%} @ %{$green%}%m%{$reset_color%} in %{$cyan%}%~%{$reset_color%}$(virtualenv_info)$vcs_info_msg_0_
+╭─%B%{$red%}%n%{$reset_color%}%b @ %{$yellow%}%m%{$reset_color%} in %B%{$magenta%}%~%{$reset_color%}%b$(virtualenv_info)$vcs_info_msg_0_
 ╰─ᐅ '
