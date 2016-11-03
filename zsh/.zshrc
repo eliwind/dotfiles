@@ -90,7 +90,6 @@ grep --exclude-dir=.svn -qs x /etc/hosts > /dev/null 2>&1
 
 alias emacs='TERM=xterm-16color emacs'
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/
-export PATH="/Applications/Emacs.app/Contents/MacOS/bin/:$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-[ -s ~/.rvm/scripts/rvm ] && source ~/.rvm/scripts/rvm
+export PATH="/Applications/Emacs.app/Contents/MacOS/bin:$PATH"
 [ -s /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
 
