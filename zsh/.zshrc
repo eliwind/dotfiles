@@ -50,9 +50,14 @@ ZSH_THEME="solarized-times"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git python ruby rails brew virtualenv virtualenvwrapper docker)
+plugins=(tmux git python ruby rails brew virtualenv virtualenvwrapper docker history-substring-search)
+
 
 source $ZSH/oh-my-zsh.sh
+
+# history highlight colors
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=red, bold, fg=cyan,bold'
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=magenta,fg=cyan,bold'
 
 # User configuration
 
@@ -88,11 +93,25 @@ export CODE_DIRECTORY="~/dev"
 grep --exclude-dir=.svn -qs x /etc/hosts > /dev/null 2>&1
 [ $? = 2 ] || export GREP_OPTIONS='--exclude-dir=.svn'
 
-alias emacs='TERM=xterm-16color emacs'
+if [[ `uname` =~ 'Darwin' ]]; then
+    alias emacs='TERM=xterm-16color /Applications/Emacs.app/Contents/MacOS/Emacs -nw'
+else
+    alias emacs='TERM=xterm-16color emacs'
+fi
+
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/
 
 [ -s /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
 
 export PATH="/Applications/Emacs.app/Contents/MacOS/bin:$HOME/Library/Haskell/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 eval "$(rbenv init -)"
+
+if [[ -z $INSIDE_EMACS ]]; then
+   # Attach to existing tmux session, or start a new one
+   tmux attach &> /dev/null
+
+   if [[ ! $TERM =~ tmux ]]; then
+       exec tmux
+   fi
+fi
 
