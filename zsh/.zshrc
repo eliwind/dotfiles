@@ -50,7 +50,7 @@ ZSH_THEME="solarized-times"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(tmux git python ruby rails brew virtualenv virtualenvwrapper docker history-substring-search)
+plugins=(tmux git python ruby rails brew virtualenv virtualenvwrapper docker history-substring-search pip)
 
 
 source $ZSH/oh-my-zsh.sh
@@ -58,6 +58,9 @@ source $ZSH/oh-my-zsh.sh
 # history highlight colors
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=red, bold, fg=cyan,bold'
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=magenta,fg=cyan,bold'
+
+# ls colors are solarized
+export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 
 # User configuration
 
@@ -106,12 +109,22 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
 export PATH="/Applications/Emacs.app/Contents/MacOS/bin:$HOME/Library/Haskell/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 eval "$(rbenv init -)"
 
-if [[ -z $INSIDE_EMACS ]]; then
-   # Attach to existing tmux session, or start a new one
-   tmux attach &> /dev/null
+eval "$(pipenv --completion)"
 
-   if [[ ! $TERM =~ tmux ]]; then
-       exec tmux
-   fi
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+
+alias docker-login='eval $(aws ecr get-login --no-include-email --region us-east-1)'
+
+if [[ -z $INSIDE_EMACS ]]; then
+
+    ZSH_TMUX_AUTOSTART=false
+    [[ $TMUX == "" ]] && tmux new-session -A -s sesh
+    
+   # tmux attach &> /dev/null
+
+   # if [[ ! $TERM =~ tmux ]]; then
+   #     exec tmux
+   # fi
 fi
 
