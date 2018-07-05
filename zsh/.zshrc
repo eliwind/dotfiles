@@ -79,18 +79,14 @@ export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-export PYLINTRC=~/dev/core/trunk/echonest/pylintrc
 export ALTERNATE_EDITOR=/Applications/Emacs.app/Contents/MacOS/Emacs
 export EDITOR="emacsclient"
 
-export ECHO_NEST_API_KEY=L9W5RGG2FGFJ47NLY
-export ECHO_NEST_CONSUMER_KEY=04d117e4c326b42aba359ca5ca5ff783
-export ECHO_NEST_SECRET_KEY=L48RMOdjSfOXej7feXuyUQ
-
 export LASTFM_API_KEY=731cf917caaefed0a8df3d8ebcca147e
 
-export HOMEBREW_GITHUB_API_TOKEN=abe39bd744dd3b4960923a8954f486ef2818826b 
+export HOMEBREW_GITHUB_API_TOKEN=$(cat ~/.homebrew_github_token)
 export CODE_DIRECTORY="~/dev"
+export PIPENV_DEFAULT_PYTHON_VERSION=2.7
 
 # see whether grep supports --exclude-dir on this machine
 grep --exclude-dir=.svn -qs x /etc/hosts > /dev/null 2>&1
@@ -106,7 +102,6 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
 
 [ -s /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
 
-export PATH="/Applications/Emacs.app/Contents/MacOS/bin:$HOME/Library/Haskell/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 eval "$(rbenv init -)"
 
 eval "$(pipenv --completion)"
