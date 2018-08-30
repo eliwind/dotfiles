@@ -1,8 +1,3 @@
-if [ -x /usr/libexec/path_helper ]; then
-	eval `/usr/libexec/path_helper -s`
-fi
-
-
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -50,7 +45,7 @@ ZSH_THEME="solarized-times"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(tmux git python ruby rails brew virtualenv virtualenvwrapper docker history-substring-search pip)
+plugins=(tmux git python ruby rails brew virtualenv virtualenvwrapper docker history-substring-search pip pipenv)
 
 
 source $ZSH/oh-my-zsh.sh

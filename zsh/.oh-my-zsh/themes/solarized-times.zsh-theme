@@ -1,7 +1,8 @@
 # a copy of phuntimes, with colors changed to match the Solarized palette
 
 function virtualenv_info {
-    [ $VIRTUAL_ENV ] && echo %{$reset_color%} with %{$blue%}`basename $VIRTUAL_ENV`%{$reset_color%}
+    [ $PIPENV_ACTIVE ] && start=[ && end=]
+    [ $VIRTUAL_ENV ] && echo %{$reset_color%} ${start}with %{$blue%}`basename $VIRTUAL_ENV`%{$reset_color%}${end}
 }
 PR_GIT_UPDATE=1
 
@@ -57,9 +58,9 @@ function steeef_precmd {
         # check for untracked files or updated submodules, since vcs_info doesn't
         if git ls-files --other --exclude-standard --directory 2> /dev/null | grep -q "."; then
             PR_GIT_UPDATE=1
-            FMT_BRANCH="%{$reset_color%} on %{$blue%}%b%c%u%{$magenta%}●%{$reset_color%}"
+            FMT_BRANCH="%{$reset_color%} on %{$green%}%b%c%u%{$magenta%}●%{$reset_color%}"
         else
-            FMT_BRANCH="%{$reset_color%} on %{$blue%}%b%c%u%{$reset_color%}"
+            FMT_BRANCH="%{$reset_color%} on %{$green%}%b%c%u%{$reset_color%}"
         fi
         zstyle ':vcs_info:*:prompt:*' formats       "${FMT_BRANCH}"
         zstyle ':vcs_info:*:prompt:*' actionformats "${FMT_BRANCH} %{$red%}(%a)%{$reset_color%}"

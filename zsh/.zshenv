@@ -1,1 +1,3 @@
-export PATH="/Applications/Emacs.app/Contents/MacOS/bin:$HOME/Library/Haskell/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+if [ -x /usr/libexec/path_helper ]; then
+	eval `/usr/libexec/path_helper -s`
+fi
