@@ -39,9 +39,6 @@
 	required = true
 [push]
 	default = simple
-[github]
-	oauth-token = abe39bd744dd3b4960923a8954f486ef2818826b
-	user = eliwind
 
 [merge]
   keepBackup = false
