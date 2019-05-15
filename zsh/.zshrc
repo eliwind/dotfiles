@@ -7,6 +7,10 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="solarized-times"
 
+# set up pyenv so we find the right python
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -45,9 +49,8 @@ ZSH_THEME="solarized-times"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(tmux git python ruby rails brew virtualenv virtualenvwrapper docker history-substring-search pip pipenv)
 
-
+plugins=(tmux git python ruby rails brew docker history-substring-search pip virtualenv virtualenv-wrapper)
 source $ZSH/oh-my-zsh.sh
 
 # history highlight colors
@@ -117,4 +120,11 @@ if [[ -z $INSIDE_EMACS ]]; then
    #     exec tmux
    # fi
 fi
+
+export DJANGO_SETTINGS_MODULE=jellyfish.settings.dev
+alias p="pipenv run"
+alias m="p python manage.py"
+
+[ -f $HOME/.profile-private.sh ] && source ~/.profile-private.sh
+
 
