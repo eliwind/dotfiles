@@ -50,7 +50,7 @@ eval "$(pyenv init -)"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 
-plugins=(tmux git python ruby rails brew docker history-substring-search pip virtualenv virtualenv-wrapper)
+plugins=(tmux git python ruby rails brew docker history-substring-search pip virtualenv virtualenv-wrapper terraform)
 source $ZSH/oh-my-zsh.sh
 
 # history highlight colors

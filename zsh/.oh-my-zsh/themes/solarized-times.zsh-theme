@@ -4,6 +4,11 @@ function virtualenv_info {
     [ $PIPENV_ACTIVE ] && start=[ && end=]
     [ $VIRTUAL_ENV ] && echo %{$reset_color%} ${start}with %{$blue%}`basename $VIRTUAL_ENV`%{$reset_color%}${end}
 }
+
+function tf_workspace_info {
+    echo %{$reset_color%} tf %{red}$(tf_prompt_info)%{$reset_color}
+}
+
 PR_GIT_UPDATE=1
 
 autoload -Uz vcs_info
