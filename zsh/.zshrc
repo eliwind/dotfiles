@@ -5,8 +5,8 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
+ZSH_CUSTOM="$HOME/.oh-my-zsh_custom"
 ZSH_THEME="solarized-times"
-
 # set up pyenv so we find the right python
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
@@ -50,7 +50,7 @@ eval "$(pyenv init -)"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 
-plugins=(tmux git python ruby rails brew docker history-substring-search pip virtualenv virtualenv-wrapper terraform)
+plugins=(tmux git python ruby rails brew docker history-substring-search pip virtualenv terraform)
 source $ZSH/oh-my-zsh.sh
 
 # history highlight colors
