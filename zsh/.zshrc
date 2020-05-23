@@ -10,6 +10,7 @@ ZSH_THEME="solarized-times"
 # set up pyenv so we find the right python
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
+eval "$(rbenv init -)"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -100,8 +101,6 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
 
 [ -s /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
 
-eval "$(rbenv init -)"
-
 eval "$(pipenv --completion)"
 
 export NVM_DIR="$HOME/.nvm"
@@ -124,6 +123,8 @@ fi
 export DJANGO_SETTINGS_MODULE=jellyfish.settings.dev
 alias p="pipenv run"
 alias m="p python manage.py"
+alias agent="docker run --rm --network host -v ~/agent-config.yml:/home/jf_agent/config.yml -v /tmp/jf_agent_output:/home/jf_agent/output -v /Users/eli/dev/jf_agent:/home/jf_agent --env-file ~/agent-creds.env jellyfishco/jf_agent:latest -m download_only --jellyfish-api-base http://localhost:8000"
+alias ac="docker run --rm -it --network host -v ~/agent-config.yml:/home/jf_agent/config.yml -v /tmp/jf_agent_output:/home/jf_agent/output -v /Users/eli/dev/jf_agent:/home/jf_agent --env-file ~/agent-creds.env --entrypoint /bin/bash jellyfishco/jf_agent:latest"
 
 [ -f $HOME/.profile-private.sh ] && source ~/.profile-private.sh
 
