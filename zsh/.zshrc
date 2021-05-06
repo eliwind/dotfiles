@@ -51,7 +51,7 @@ eval "$(rbenv init -)"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 
-plugins=(tmux git python ruby rails brew docker history-substring-search pip virtualenv terraform)
+plugins=(tmux git python ruby rails docker history-substring-search pip virtualenv terraform)
 source $ZSH/oh-my-zsh.sh
 
 # history highlight colors
@@ -129,3 +129,7 @@ alias ac="docker run --rm -it --network host -v ~/agent-config.yml:/home/jf_agen
 [ -f $HOME/.profile-private.sh ] && source ~/.profile-private.sh
 
 
+
+export DIRENV_LOG_FORMAT=''
+eval "$(direnv hook zsh)"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
