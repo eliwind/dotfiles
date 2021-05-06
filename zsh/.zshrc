@@ -47,11 +47,17 @@ eval "$(rbenv init -)"
 # yyyy-mm-dd
 # HIST_STAMPS="mm/dd/yyyy"
 
+
+
+# nvm config
+export NVM_LAZY_LOAD=true
+export NVM_COMPLETION=true
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 
-plugins=(tmux git python ruby rails docker history-substring-search pip virtualenv terraform)
+plugins=(tmux zsh-nvm git python ruby rails docker history-substring-search pip virtualenv terraform)
 source $ZSH/oh-my-zsh.sh
 
 # history highlight colors
@@ -63,7 +69,7 @@ export LSCOLORS=gxfxbEaEBxxEhEhBaDaCaD
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# export MANPATH="/usr/local/man:$MANPATH
 
 # # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -103,9 +109,6 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
 
 eval "$(pipenv --completion)"
 
-export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
-
 alias docker-login='eval $(aws ecr get-login --no-include-email --region us-east-1)'
 
 if [[ -z $INSIDE_EMACS ]]; then
@@ -132,4 +135,4 @@ alias ac="docker run --rm -it --network host -v ~/agent-config.yml:/home/jf_agen
 
 export DIRENV_LOG_FORMAT=''
 eval "$(direnv hook zsh)"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
