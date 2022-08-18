@@ -7,9 +7,9 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_CUSTOM="$HOME/.oh-my-zsh_custom"
 ZSH_THEME="solarized-times"
-# set up pyenv so we find the right python
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
+
+export PATH="$HOME/.pyenv/shims:$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
 eval "$(rbenv init -)"
 
 # Example aliases
@@ -107,20 +107,14 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
 
 [ -s /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
 
-eval "$(pipenv --completion)"
+eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
+
 
 alias docker-login='eval $(aws ecr get-login --no-include-email --region us-east-1)'
 
 if [[ -z $INSIDE_EMACS ]]; then
-
     ZSH_TMUX_AUTOSTART=false
     [[ $TMUX == "" ]] && tmux new-session -A -s sesh
-    
-   # tmux attach &> /dev/null
-
-   # if [[ ! $TERM =~ tmux ]]; then
-   #     exec tmux
-   # fi
 fi
 
 export DJANGO_SETTINGS_MODULE=jellyfish.settings.dev
@@ -135,4 +129,9 @@ alias ac="docker run --rm -it --network host -v ~/agent-config.yml:/home/jf_agen
 
 export DIRENV_LOG_FORMAT=''
 eval "$(direnv hook zsh)"
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
