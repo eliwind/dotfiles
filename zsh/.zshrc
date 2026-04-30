@@ -8,9 +8,9 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM="$HOME/.oh-my-zsh_custom"
 ZSH_THEME="solarized-times"
 
-export PATH="$HOME/.pyenv/shims:$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(rbenv init -)"
+# export PATH="$HOME/.pyenv/shims:$HOME/.pyenv/bin:$PATH"
+# eval "$(pyenv init --path)"
+# eval "$(rbenv init -)"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -91,7 +91,6 @@ export LASTFM_API_KEY=731cf917caaefed0a8df3d8ebcca147e
 
 export HOMEBREW_GITHUB_API_TOKEN=$(cat ~/.homebrew_github_token)
 export CODE_DIRECTORY="~/dev"
-export PIPENV_DEFAULT_PYTHON_VERSION=2.7
 
 # see whether grep supports --exclude-dir on this machine
 grep --exclude-dir=.svn -qs x /etc/hosts > /dev/null 2>&1
@@ -107,9 +106,6 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
 
 [ -s /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
 
-eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
-
-
 alias docker-login='eval $(aws ecr get-login --no-include-email --region us-east-1)'
 
 if [[ -z $INSIDE_EMACS ]]; then
@@ -122,6 +118,8 @@ alias p="pipenv run"
 alias m="p python manage.py"
 alias agent="docker run --rm --network host -v ~/agent-config.yml:/home/jf_agent/config.yml -v /tmp/jf_agent_output:/home/jf_agent/output -v /Users/eli/dev/jf_agent:/home/jf_agent --env-file ~/agent-creds.env jellyfishco/jf_agent:latest -m download_only --jellyfish-api-base http://localhost:8000"
 alias ac="docker run --rm -it --network host -v ~/agent-config.yml:/home/jf_agent/config.yml -v /tmp/jf_agent_output:/home/jf_agent/output -v /Users/eli/dev/jf_agent:/home/jf_agent --env-file ~/agent-creds.env --entrypoint /bin/bash jellyfishco/jf_agent:latest"
+alias sso="aws sso logout && aws sso login"
+
 
 [ -f $HOME/.profile-private.sh ] && source ~/.profile-private.sh
 
@@ -135,3 +133,15 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+export JF_MANAGED_HOMEBREW=true
+
+
+. "$HOME/.local/bin/env"
+
+eval "$(mise activate zsh)"
+
+# Claude Code: toggle between Anthropic account and AWS Bedrock
+alias claude-anthropic='unset CLAUDE_CODE_USE_BEDROCK && claude'
+alias claude-bedrock='CLAUDE_CODE_USE_BEDROCK=1 claude'
